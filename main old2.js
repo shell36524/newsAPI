@@ -134,65 +134,30 @@ const pagination = ()=>{
   //page group : Math.ceil -> 올림
   let pageGroup = Math.ceil(page/10);
   //last page
-  let last = pageGroup*10;
+  let last = pageGroup*10
   //first page
-  // let first = last - 9;
-  if(last > total_pages){
-    last = total_pages;
-  }
-  let first = last - 9 <= 0 ? 1 : last - 9 ;
-  if(first >= 11){
-    paginationHTML = `<li class="page-item">
-    <a class="page-link" href="#" aria-label="Next" onclick="moveToPage(1)">
-      <span aria-hidden="true">&lt;&lt;</span>
-    </a>
-  </li>
-  <li class="page-item">
-    <a class="page-link" href="#" aria-label="Next" onclick="moveToPage(${page - 1})">
-      <span aria-hidden="true">&lt;</span>
-    </a>
-  </li>`;
-  }
-  for(let i = first; i <= last; i++){
-    paginationHTML += `<li class="page-item ${i == page ? "active" : ""}">
-    <a class="page-link" href="#" aria-label="Next" onclick="moveToPage(${i})">
-      <span aria-hidden="true">${i}</span>
-    </a>
-  </li>`;
-  }
-  if(last < total_pages){
-    paginationHTML += `<li class="page-item" onclick="moveToPage(${page+1})">
-    <a class="page-link" href="#" aria-label="Next">
-      <span aria-hidden="true">&gt;</span>
-    </a>
-  </li>
-  <li class="page-item" onclick="moveToPage(${total_pages})">
-    <a class="page-link" href="#" aria-label="Next">
-      <span aria-hidden="true">&gt;&gt;</span>
-    </a>
-  </li>`;
-  }
-  
-  document.querySelector(".pagination").innerHTML = paginationHTML
-  };
+  let first = last - 9
+
 
   //first~last page print
   //화살표 넣기 < >
-//   paginationHTML = `<li class="page-item">
-//   <a class="page-link" href="#" aria-label="Previous" onclick="moveToPage(${page-1})">
-//     <span aria-hidden="true">&lt;</span>
-//   </a>
-// </li>`;
+  paginationHTML = `<li class="page-item">
+  <a class="page-link" href="#" aria-label="Previous" onclick="moveToPage(${page-1})">
+    <span aria-hidden="true">&lt;</span>
+  </a>
+</li>`;
   //현재페이지 표시(삼항연산)
-//   for(let i = first; i<=last; i++){
-//     paginationHTML+= `<li class="page-item ${page == i? "active" : ""}"><a class="page-link" href="#" onclick="moveToPage(${i})">${i}</a></li>`;
+  for(let i = first; i<=last; i++){
+    paginationHTML+= `<li class="page-item ${page == i? "active" : ""}"><a class="page-link" href="#" onclick="moveToPage(${i})">${i}</a></li>`;
   
-//   }
-//   paginationHTML += `<li class="page-item">
-//   <a class="page-link" href="#" aria-label="Next" onclick="moveToPage(${page+1})">
-//     <span aria-hidden="true">&gt;</span>
-//   </a>
-// </li>`;
+  }
+  paginationHTML += `<li class="page-item">
+  <a class="page-link" href="#" aria-label="Next" onclick="moveToPage(${page+1})">
+    <span aria-hidden="true">&gt;</span>
+  </a>
+</li>`;
+  document.querySelector(".pagination").innerHTML = paginationHTML
+};
 
   //total page가 설정한 페이지 그룹수보다 적을때
   
@@ -205,15 +170,12 @@ const pagination = ()=>{
 const moveToPage = (pageNum) =>{
   //1)이동하고 싶은 페이지 확인
   page = pageNum;
-  window.scrollTo({ top:0, behavior: "smooth"});
 
   //2)api 다시 호출 : getNews
   getNews();
 
   //3)
-};
-
-
+}
 
 
 //키워드검색 클릭이벤트
