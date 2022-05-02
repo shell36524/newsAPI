@@ -7,8 +7,9 @@
   display: flex;
   justify-content: center;
   margin-top: 1em;
+  margin-bottom: 30px;
   font-family: 'Tapestry', cursive;
-  font-size: 50px;
+  font-size: 70px;
   font-weight: 900;
 }
 .head-line svg{
@@ -23,16 +24,21 @@
   border-top: 1px solid gray;
   border-bottom: 4px double black;
   /* font-family: 'Oleo Script Swash Caps', cursive; */
-  font-family: 'Tapestry', cursive;
+  /* font-family: 'Tapestry', cursive; */
+  font-family: 'Roboto Mono', monospace;
   font-weight: bolder;
+  font-size: 15px;
 }
 .menus button{
   border: none;
   background: none;
-  margin: 5px;
+  margin: 7px;
 }
 .menus button:hover{
   background-color: bisque;
+}
+.col-lg-4{
+  text-align: center;
 }
 .news-img-size{
   max-width: 100%;
